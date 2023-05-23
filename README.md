@@ -24,14 +24,11 @@ Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5). Fin
 - Register an account at [OpenAI](https://openai.com/) and get a key [Where do I find my Secret API Key?](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)
 
 ## Run the Demo
-<details>
-<summary>Run turtlesim</summary>
-</br>
+1. Run `turtlesim`
 ```shell
 source /opt/ros/humble/setup.bash # source your ROS distribution
 ros2 run turtlesim turtlesim_node
 ```
-</details>
 
 2. Run `rosbridge_server`
 ```shell

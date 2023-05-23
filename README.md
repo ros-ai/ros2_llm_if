@@ -24,11 +24,15 @@ Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5). Fin
 - Register an account at [OpenAI](https://openai.com/) and get a key [Where do I find my Secret API Key?](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)
 
 ## Run the Demo
-1. Run `turtlesim`
+<details>
+<summary>Run turtlesim</summary>
+</br>
 ```shell
 source /opt/ros/humble/setup.bash # source your ROS distribution
-ros2 run turtlesim turtlesim_node 
+ros2 run turtlesim turtlesim_node
 ```
+</details>
+
 2. Run `rosbridge_server`
 ```shell
 source /opt/ros/humble/setup.bash # source your ROS distribution
@@ -52,7 +56,7 @@ You should see the turtle move.
 <details>
 <summary>Why roslibpy and rosbridge_suite? Why not just execute Python code?</summary>
 <br>
-Operating ROS services through WebSockets limits `GPT`'s access to your system. It futher relieves users from ROS dependencies.
+Operating ROS services through WebSockets limits GPT's access to your system. It futher relieves users from ROS dependencies.
 </details>
 
 <details>

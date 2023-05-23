@@ -1,5 +1,10 @@
 # TurtleSim ChatGPT
-This demo shows how `ChatGPT` can be used to call into `ROS` services via [turtlesim](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html). `ChatGPT` is granted access to the API via [api.json](api.json). `ROS` is interfaces via WebSockets through `rosbridge_suite`.
+This demo demonstrates how `ChatGPT` can be used to call into `ROS` services, specifically services in [turtlesim](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html).
+
+`ROS` is interfaced via WebSockets through `rosbridge_suite`. `ChatGPT`:
+- Calls into WebSockets
+- Does **not** execute any code on your machine
+- Is given knowledge about the API via [api.json](api.json).
 
 ## Installation
 - Have a running ROS distribution, e.g. [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)

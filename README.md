@@ -6,6 +6,13 @@ This demo demonstrates how `ChatGPT` can be used to call into `ROS` services, sp
 - Does **not** execute any code on your machine
 - Is given knowledge about the API via [api.json](api.json).
 
+
+Prompt:
+
+```shell
+Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5). Finally, spawn a turtle named turtle2 at (10, 10) and kill turtle1.
+```
+
 <p align="center">
     <img src="img/turtlesim.gif" width="300" height="300" />
 </p>
@@ -41,14 +48,22 @@ python main.py \
 You should see the turtle move.
 
 ## Notes
-`Q`: Why `roslibpy` and `rosbridge_suite`? Why not just execute Python code?
 
-`A`: Operating `ROS` services through WebSockets limits `GPT`'s access to your system. It futher relieves users from `ROS` dependencies.
+<details>
+<summary>Why roslibpy and rosbridge_suite? Why not just execute Python code?</summary>
+<br>
+Operating ROS services through WebSockets limits `GPT`'s access to your system. It futher relieves users from ROS dependencies.
+</details>
 
-`Q`: Where to go from here?
+<details>
+<summary>Where to go from here?</summary>
+<br>
+Play around and have ChatGPT call into any desired services.
+</details>
 
-`A`: Play around and have `ChatGPT` call into any desired services.
 
-`Q`: Why not action clients instead of services?
-
-`A`: By the time of this writing, action clients are not supported via `rosbridge_suite` yet, refer to https://github.com/RobotWebTools/rosbridge_suite/issues/697.
+<details>
+<summary>Why not action clients instead of services?</summary>
+<br>
+By the time of this writing, action clients are not supported via rosbridge_suite yet, refer to https://github.com/RobotWebTools/rosbridge_suite/issues/697.
+</details>

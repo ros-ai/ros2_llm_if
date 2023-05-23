@@ -21,7 +21,12 @@ ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 
 3. Prompt [OpenAI](https://openai.com/)'s GPT models
 ```shell
-python prompt.py
+python main.py \
+    --prompt "\
+        Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5).\
+        Finally, spawn a turtle named turtle2 at (10, 10) and kill turtle1.\
+    " \
+    --key your_key
 ```
 
 ## Notes

@@ -1,5 +1,5 @@
 # TurtleSim ChatGPT
-This demo shows how `ChatGPT` can be used to call into `ROS` services via [turtlesim](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html).
+This demo shows how `ChatGPT` can be used to call into `ROS` services via [turtlesim](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html). `ChatGPT` is granted access to the API via [api.json](api.json). `ROS` is interfaces via WebSockets through `rosbridge_suite`.
 
 ## Installation
 - Have a running ROS distribution, e.g. [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
@@ -8,7 +8,7 @@ This demo shows how `ChatGPT` can be used to call into `ROS` services via [turtl
 - Register an account at [OpenAI](https://openai.com/) and get a key [Where do I find my Secret API Key?](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)
 
 ## Run the Demo
-1. Run turtle sim
+1. Run `turtlesim`
 ```shell
 source /opt/ros/humble/setup.bash # source your ROS distribution
 ros2 run turtlesim turtlesim_node 
@@ -28,6 +28,8 @@ python main.py \
     " \
     --key your_key
 ```
+
+You should see the turtle move.
 
 ## Notes
 `Q`: Why `roslibpy` and `rosbridge_suite`? Why not just execute Python code?

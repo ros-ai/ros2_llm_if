@@ -6,6 +6,10 @@ This demo demonstrates how `ChatGPT` can be used to call into `ROS` services, sp
 - Does **not** execute any code on your machine
 - Is given knowledge about the API via [api.json](api.json).
 
+<p align="center">
+    <img src="img/turtlesim.gif" width="300" height="300" />
+</p>
+
 ## Installation
 - Have a running ROS distribution, e.g. [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
 - Clone this repo `git clone git@github.com:mhubii/chatgpt_turtlesim.git`

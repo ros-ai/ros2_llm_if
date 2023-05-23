@@ -44,7 +44,6 @@ def main() -> None:
     services = create_services_from_api(ros_client, api)
 
     for call in generated_api_calls:
-        print(call)
         print("Calling service {} with args {}".format(call["name"], call["args"]))
         input("Press Enter to continue...")
 

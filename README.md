@@ -50,7 +50,13 @@ python main.py \
 
 You will have to press a key to execute the resulting calls step by step.
 
-Why not try `Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).` or `Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5). Rotate the new turtle by 240 degrees. Finally, spawn another turtle named steve at (8,7).` or `Spawn 10 turtles, each at a different location with different names.`? Maybe you can find new ones!
+Why not try
+
+- `Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).`
+- `Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5). Rotate the new turtle by 240 degrees. Finally, spawn another turtle named steve at (8,7).`
+- `Spawn 10 turtles, each at a different location with different names.`
+
+Maybe you can find new ones!
 
 ## Notes
 

@@ -1,6 +1,6 @@
 [
     {
-        "name": "/turtle1/teleport_absolute",
+        "name": "/turtle_name/teleport_absolute",
         "service_type": "turtlesim/TeleportAbsolute",
         "args": {
             "x": "float in [0, 10]",
@@ -9,7 +9,7 @@
         }
     },
     {
-        "name": "/turtle1/teleport_relative",
+        "name": "/turtle_name/teleport_relative",
         "service_type": "turtlesim/TeleportRelative",
         "args": {
             "linear": "float",

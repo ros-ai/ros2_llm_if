@@ -1,7 +1,6 @@
 [
     {
         "name": "/turtle_name/teleport_absolute",
-        "service_type": "turtlesim/TeleportAbsolute",
         "args": {
             "x": "float in [0, 10]",
             "y": "float in [0, 10]",
@@ -10,7 +9,6 @@
     },
     {
         "name": "/turtle_name/teleport_relative",
-        "service_type": "turtlesim/TeleportRelative",
         "args": {
             "linear": "float",
             "angular": "float"
@@ -18,7 +16,6 @@
     },
     {
         "name": "/spawn",
-        "service_type": "turtlesim/Spawn",
         "args": {
             "x": "float in [0, 10]",
             "y": "float in [0, 10]",
@@ -28,7 +25,6 @@
     },
     {
         "name": "/kill",
-        "service_type": "turtlesim/Kill",
         "args": {
             "name": "string"
         }

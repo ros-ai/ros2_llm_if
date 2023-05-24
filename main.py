@@ -23,6 +23,9 @@ def main() -> None:
     )
     parser.add_argument("--host", type=str, default="localhost", help="ROS host.")
     parser.add_argument("--port", type=int, default=9090, help="ROS port.")
+    parser.add_argument(
+        "--model", type=str, default="gpt-3.5-turbo", help="OpenAI model."
+    )
     args = parser.parse_args()
 
     # configure your key
@@ -38,13 +41,19 @@ def main() -> None:
     ros_client.run()
 
     # turn prompt into API calls
-    generated_api_calls = call_openai_model(args.prompt, api)
+    print("Generating API calls. This may take some time...")
+    generated_api_calls = call_openai_model(args.prompt, api, model=args.model)
+    print("Done.")
 
     # create services from the API
     services = create_services_from_api(ros_client, api)
 
     for call in generated_api_calls:
-        print("Calling service {} with args {}".format(call["name"], call["args"]))
+        print(
+            "Calling service {} of type {} with args {}".format(
+                call["name"], call["service_type"], call["args"]
+            )
+        )
         input("Press Enter to continue...")
 
         try:

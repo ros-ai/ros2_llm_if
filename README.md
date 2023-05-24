@@ -48,7 +48,7 @@ python main.py \
     --key your_key
 ```
 
-You should see the turtle move.
+You will have to press a key to execute the resulting calls step by step.
 
 ## Notes
 

@@ -2,18 +2,19 @@ from typing import Dict
 import roslibpy
 
 
-def get_available_services(client: roslibpy.Ros) -> Dict:
-    """Create a dictionary of current services.
+def get_service(
+    client: roslibpy.Ros, name: str, services: Dict[str, roslibpy.Service]
+) -> Dict[str, roslibpy.Service]:
+    """Update current services with the required one.
 
     Args:
         client (roslibpy.Ros): ROS client.
+        name (str): Required service name.
+        services (Dict[str, roslibpy.Service]): Dictionary of current services.
 
     Returns:
-        Dict: Dictionary of services.
+        Dicr[str, roslibpy.Service]: Updated dictionary of services.
     """
-    services = client.get_services(None)
-    services = {
-        service: roslibpy.Service(client, service, client.get_service_type(service))
-        for service in services
-    }
+    if name not in services:
+        services[name] = roslibpy.Service(client, name, client.get_service_type(name))
     return services

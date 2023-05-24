@@ -3,7 +3,7 @@ import openai
 import json
 import roslibpy
 
-from prompt import get_available_services, prompt_to_api_calls
+from prompt import get_service, prompt_to_api_calls
 
 
 def args_factory() -> argparse.Namespace:
@@ -44,6 +44,7 @@ def main() -> None:
     # create a ROS client
     ros_client = roslibpy.Ros(host=args.host, port=args.port)
     ros_client.run()
+    services = {}
 
     # turn prompt into API calls
     print("Generating API calls. This may take some time...")
@@ -51,9 +52,9 @@ def main() -> None:
     print("Done.")
 
     for call in generated_api_calls:
-        # get available services (in case they changed)
-        print("Getting available services. This might take some time...")
-        services = get_available_services(ros_client)
+        # get required service (in case they changed)
+        print("Getting required service. This might take some time...")
+        services = get_service(ros_client, call["name"], services)
         print("Done.")
 
         try:

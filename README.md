@@ -77,7 +77,7 @@ This repository is just a proof of concept and it is rather slow. It, however, d
 <details>
 <summary>Why roslibpy and rosbridge_suite? Why not just execute Python code?</summary>
 <br>
-Operating ROS services through WebSockets limits GPT's access to your system. It futher relieves users from ROS dependencies. In the future, someone might find executing Python code more powerful!
+Operating ROS services through WebSockets limits GPT's access to your system. It further relieves users from ROS dependencies. In the future, someone might find executing Python code more powerful!
 </details>
 
 <details>

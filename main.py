@@ -19,7 +19,7 @@ def args_factory() -> argparse.Namespace:
         help="Prompt.",
     )
     parser.add_argument(
-        "--api", type=str, default="api.json", help="Path to API JSON file."
+        "--api", type=str, default="turtlesim_api.json", help="Path to API JSON file."
     )
     parser.add_argument("--host", type=str, default="localhost", help="ROS host.")
     parser.add_argument("--port", type=int, default=9090, help="ROS port.")

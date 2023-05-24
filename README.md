@@ -50,6 +50,8 @@ python main.py \
 
 You will have to press a key to execute the resulting calls step by step.
 
+Another prompt example is `Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5)`. Try yourself!
+
 ## Notes
 
 This repository is just a proof of concept and it is rather slow. It, however, demonstrates how such a system could work more broadly across ROS.

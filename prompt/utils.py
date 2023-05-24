@@ -1,20 +1,19 @@
-from typing import Any
+from typing import Dict
 import roslibpy
 
 
-def create_services_from_api(client: roslibpy.Ros, api: Any) -> Any:
-    """Create a dictionary of services from the API.
+def get_available_services(client: roslibpy.Ros) -> Dict:
+    """Create a dictionary of current services.
 
     Args:
         client (roslibpy.Ros): ROS client.
-        api (Any): API JSON object.
 
     Returns:
-        Any: Dictionary of services.
+        Dict: Dictionary of services.
     """
-    services = {}
-    for service in api:
-        services[service["name"]] = roslibpy.Service(
-            client, service["name"], service["service_type"]
-        )
+    services = client.get_services(None)
+    services = {
+        service: roslibpy.Service(client, service, client.get_service_type(service))
+        for service in services
+    }
     return services

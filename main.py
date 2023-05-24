@@ -3,7 +3,7 @@ import openai
 import json
 import roslibpy
 
-from prompt import create_services_from_api, call_openai_model
+from prompt import get_available_services, prompt_to_api_calls
 
 
 def main() -> None:
@@ -42,11 +42,8 @@ def main() -> None:
 
     # turn prompt into API calls
     print("Generating API calls. This may take some time...")
-    generated_api_calls = call_openai_model(args.prompt, api, model=args.model)
+    generated_api_calls = prompt_to_api_calls(args.prompt, api, model=args.model)
     print("Done.")
-
-    # create services from the API
-    services = create_services_from_api(ros_client, api)
 
     for call in generated_api_calls:
         print(
@@ -57,11 +54,18 @@ def main() -> None:
         input("Press Enter to continue...")
 
         try:
+            # get available services (in case they changed)
+            print("Getting available services...")
+            services = get_available_services(ros_client)
+            print("Done.")
+
             service = services[call["name"]]
             request = roslibpy.ServiceRequest(call["args"])
             service.call(request)
         except Exception as e:
             print(f"Failed to call service with {e}")
+
+    ros_client.terminate()
 
 
 if __name__ == "__main__":

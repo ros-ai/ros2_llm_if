@@ -1,2 +1,2 @@
-from .utils import create_services_from_api
-from .openai_interface import call_openai_model
+from .utils import get_available_services
+from .openai_interface import prompt_to_api_calls

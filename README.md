@@ -52,10 +52,17 @@ python main.py \
 You will have to press a key to execute the resulting calls step by step.
 
 Why not try
-
-- `Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).`
-- `Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5). Rotate the new turtle by 240 degrees. Finally, spawn another turtle named steve at (8,7).`
-- `Spawn 10 turtles, each at a different location with different names.`
+ 
+```shell
+--prompt Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).
+``` 
+```shell
+--prompt Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).
+--prompt Rotate the new turtle by 240 degrees. Finally, spawn another turtle named steve at (8,7).
+```
+```shell
+--prompt Spawn 10 turtles, each at a different location with different names.
+```
 
 Maybe you can find new ones!
 
@@ -66,7 +73,7 @@ This repository is just a proof of concept and it is rather slow. It, however, d
 <details>
 <summary>Why roslibpy and rosbridge_suite? Why not just execute Python code?</summary>
 <br>
-Operating ROS services through WebSockets limits GPT's access to your system. It futher relieves users from ROS dependencies.
+Operating ROS services through WebSockets limits GPT's access to your system. It futher relieves users from ROS dependencies. In the future, someone might find executing Python code more powerful!
 </details>
 
 <details>

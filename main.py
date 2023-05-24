@@ -68,7 +68,7 @@ def main() -> None:
             request = roslibpy.ServiceRequest(call["args"])
             service.call(request)
         except Exception as e:
-            print(f"Failed to call service with {e}")
+            print(f"Failed to call service with {e}.")
 
     ros_client.terminate()
 

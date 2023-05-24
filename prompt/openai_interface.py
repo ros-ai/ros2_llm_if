@@ -27,7 +27,8 @@ def prompt_to_api_calls(
                 "role": "system",
                 "content": f"\
                     Assume the following JSON API: {str(api)}.\
-                    Respond as a plain JSON list.\
+                    Strictly answer in the form of a JSON list.\
+                    E.g. [dict, dict, dict]\
                     Do not add comments.\
                     Do not add explanations.\
                 ",

@@ -13,12 +13,17 @@ def call_openai_model(
         model=model,
         messages=[
             {
-                "role": "user",
+                "role": "system",
                 "content": f"\
-                        Assume the following JSON API: {str(api)}\
-                        {prompt}\
-                        Respond as a plain JSON list. Do not add comments.\
-                    ",
+                    Assume the following JSON API: {str(api)}.\
+                    Respond as a plain JSON list.\
+                    Do not add comments.\
+                    Do not add explanations.\
+                "
+            },
+            {
+                "role": "user",
+                "content": prompt
             },
         ],
         temperature=temperature,

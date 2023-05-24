@@ -6,7 +6,7 @@ import roslibpy
 from prompt import get_available_services, prompt_to_api_calls
 
 
-def main() -> None:
+def args_factory() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--key", type=str, required=True, help="OpenAI API key.")
     parser.add_argument(
@@ -27,6 +27,11 @@ def main() -> None:
         "--model", type=str, default="gpt-3.5-turbo", help="OpenAI model."
     )
     args = parser.parse_args()
+    return args
+
+
+def main() -> None:
+    args = args_factory()
 
     # configure your key
     openai.api_key = args.key

@@ -52,6 +52,8 @@ You should see the turtle move.
 
 ## Notes
 
+This repository is just a proof of concept and it is rather slow. It, however, demonstrates how such a system could work more broadly across ROS.
+
 <details>
 <summary>Why roslibpy and rosbridge_suite? Why not just execute Python code?</summary>
 <br>

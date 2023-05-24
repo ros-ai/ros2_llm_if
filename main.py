@@ -51,19 +51,18 @@ def main() -> None:
     print("Done.")
 
     for call in generated_api_calls:
-        print(
-            "Calling service {} of type {} with args {}".format(
-                call["name"], call["service_type"], call["args"]
-            )
-        )
-        input("Press Enter to continue...")
+        # get available services (in case they changed)
+        print("Getting available services. This might take some time...")
+        services = get_available_services(ros_client)
+        print("Done.")
 
         try:
-            # get available services (in case they changed)
-            print("Getting available services...")
-            services = get_available_services(ros_client)
-            print("Done.")
-
+            print(
+                "Calling service {} of type {} with args {}".format(
+                    call["name"], call["service_type"], call["args"]
+                )
+            )
+            input("Press Enter to continue...")
             service = services[call["name"]]
             request = roslibpy.ServiceRequest(call["args"])
             service.call(request)

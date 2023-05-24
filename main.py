@@ -3,21 +3,12 @@ import openai
 import json
 import roslibpy
 
-from prompt import get_service, prompt_to_api_calls
+from prompt import get_service, OpenAIInterface
 
 
 def args_factory() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--key", type=str, required=True, help="OpenAI API key.")
-    parser.add_argument(
-        "--prompt",
-        type=str,
-        default="\
-            Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5).\
-            Finally, spawn a turtle named turtle2 at (10, 10) and kill turtle1.\
-        ",
-        help="Prompt.",
-    )
     parser.add_argument(
         "--api", type=str, default="turtlesim_api.json", help="Path to API JSON file."
     )
@@ -33,42 +24,49 @@ def args_factory() -> argparse.Namespace:
 def main() -> None:
     args = args_factory()
 
-    # configure your key
-    openai.api_key = args.key
-
     # load the API
     api = None
     with open(args.api, "r") as f:
         api = json.load(f)
+
+    # configure your interface
+    interface = OpenAIInterface(api=api, key=args.key)
 
     # create a ROS client
     ros_client = roslibpy.Ros(host=args.host, port=args.port)
     ros_client.run()
     services = {}
 
-    # turn prompt into API calls
-    print("Generating API calls. This may take some time...")
-    generated_api_calls = prompt_to_api_calls(args.prompt, api, model=args.model)
-    print("Done.")
-
-    for call in generated_api_calls:
-        # get required service (in case they changed)
-        print("Getting required service. This might take some time...")
-        services = get_service(ros_client, call["name"], services)
-        print("Done.")
-
+    while True:
         try:
-            print(
-                "Calling service {} of type {} with args {}".format(
-                    call["name"], call["service_type"], call["args"]
-                )
+            prompt = input("Enter a prompt: ")
+            # turn prompt into API calls
+            print("Generating API calls. This may take some time...")
+            generated_api_calls = interface.prompt_to_api_calls(
+                prompt, model=args.model
             )
-            input("Press Enter to continue...")
-            service = services[call["name"]]
-            request = roslibpy.ServiceRequest(call["args"])
-            service.call(request)
-        except Exception as e:
-            print(f"Failed to call service with {e}.")
+            print("Done.")
+
+            for call in generated_api_calls:
+                # get required service (in case they changed)
+                print("Getting required service. This might take some time...")
+                services = get_service(ros_client, call["name"], services)
+                print("Done.")
+
+                try:
+                    print(
+                        "Calling service {} with args {}".format(
+                            call["name"], call["args"]
+                        )
+                    )
+                    input("Press Enter to continue...")
+                    service = services[call["name"]]
+                    request = roslibpy.ServiceRequest(call["args"])
+                    service.call(request)
+                except Exception as e:
+                    print(f"Failed to call service with {e}.")
+        except KeyboardInterrupt:
+            break
 
     ros_client.terminate()
 

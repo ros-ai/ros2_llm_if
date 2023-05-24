@@ -41,34 +41,27 @@ ros2 launch rosbridge_server rosbridge_websocket_launch.xml
 
 3. Prompt [OpenAI](https://openai.com/)'s GPT models
 ```shell
-python main.py \
-    --prompt "\
-        Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5).\
-        Finally, spawn a turtle named turtle2 at (10, 10) and remove turtle1.\
-    " \
-    --key your_key
+python main.py --key your_key
 ```
 
-You will have to press a key to execute the resulting calls step by step.
-
-Why not try
- 
+You will we asked to enter a prompt. Try out
 ```shell
---prompt "\
-    Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).\
-"
-``` 
-```shell
---prompt "\
-    Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).\
-    Rotate the new turtle by 240 degrees. Finally, spawn another turtle named steve at (8,7).\
-"
-```
-```shell
---prompt "Spawn 10 turtles, each at a different location with different names."
+Move turtle1 left by 2, then rotate 180 degrees, and move back to (5, 5). Finally, spawn a turtle named turtle2 at (10, 10) and remove turtle1.
 ```
 
-Maybe you can find new ones!
+You will be presented with the generated API calls any will have to accept each one prior to execution.
+
+Why not try others:
+
+```shell
+Add 3 more turtles with names inspired by artists at random positions
+```
+
+```shell
+Move the turtles with artist's names forward by 2
+```
+
+Maybe you can find new ones! You might find that the format is not always adhered to!
 
 ## Notes
 
@@ -91,7 +84,6 @@ Operating ROS services through WebSockets limits GPT's access to your system. It
 <br>
 Play around and have ChatGPT call into any desired services.
 </details>
-
 
 <details>
 <summary>Why not action clients instead of services?</summary>

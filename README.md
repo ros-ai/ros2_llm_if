@@ -54,14 +54,18 @@ You will have to press a key to execute the resulting calls step by step.
 Why not try
  
 ```shell
---prompt Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).
+--prompt "\
+    Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).\
+"
 ``` 
 ```shell
---prompt Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).
---prompt Rotate the new turtle by 240 degrees. Finally, spawn another turtle named steve at (8,7).
+--prompt "\
+    Remove turtle1 and spawn a new turtle named peter at (3,3). Move the new turtle to (5,5).\
+    Rotate the new turtle by 240 degrees. Finally, spawn another turtle named steve at (8,7).\
+"
 ```
 ```shell
---prompt Spawn 10 turtles, each at a different location with different names.
+--prompt "Spawn 10 turtles, each at a different location with different names."
 ```
 
 Maybe you can find new ones!

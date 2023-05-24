@@ -75,6 +75,12 @@ Maybe you can find new ones!
 This repository is just a proof of concept and it is rather slow. It, however, demonstrates how such a system could work more broadly across ROS.
 
 <details>
+<summary>What are limitations?</summary>
+<br>
+ChatGPT does not always generate answers in the expected JSON format. This is something that requires improvements.
+</details>
+
+<details>
 <summary>Why roslibpy and rosbridge_suite? Why not just execute Python code?</summary>
 <br>
 Operating ROS services through WebSockets limits GPT's access to your system. It further relieves users from ROS dependencies. In the future, someone might find executing Python code more powerful!

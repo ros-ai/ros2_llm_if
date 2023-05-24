@@ -10,7 +10,8 @@ This demo demonstrates how `ChatGPT` can be used to call into `ROS` services, sp
 Prompt:
 
 ```shell
-Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5). Finally, spawn a turtle named turtle2 at (10, 10) and remove turtle1.
+Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5).
+Finally, spawn a turtle named turtle2 at (10, 10) and remove turtle1.
 ```
 
 Result:

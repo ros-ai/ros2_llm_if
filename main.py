@@ -1,15 +1,16 @@
 import argparse
 import json
-import roslibpy
+from glob import glob
 
-from prompt import get_service, OpenAIInterface
+import roslibpy
+from prompt import OpenAIInterface, append_service
 
 
 def args_factory() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--key", type=str, required=True, help="OpenAI API key.")
     parser.add_argument(
-        "--api", type=str, default="turtlesim_api.json", help="Path to API JSON file."
+        "--api", type=str, default="turtlesim_msgs/srv", help="Path to API JSON file."
     )
     parser.add_argument("--host", type=str, default="localhost", help="ROS host.")
     parser.add_argument("--port", type=int, default=9090, help="ROS port.")
@@ -24,9 +25,10 @@ def main() -> None:
     args = args_factory()
 
     # load the API
-    api = None
-    with open(args.api, "r") as f:
-        api = json.load(f)
+    api = []
+    for api_file in glob(f"{args.api}/*.json"):
+        with open(api_file, "r") as f:
+            api.append(json.load(f))
 
     # configure your interface
     interface = OpenAIInterface(api=api, key=args.key)
@@ -49,17 +51,17 @@ def main() -> None:
             for call in generated_api_calls:
                 # get required service (in case they changed)
                 print("Getting required service. This might take some time...")
-                services = get_service(ros_client, call["name"], services)
+                services = append_service(ros_client, call["service"], services)
                 print("Done.")
 
                 try:
                     print(
                         "Calling service {} with args {}".format(
-                            call["name"], call["args"]
+                            call["service"], call["args"]
                         )
                     )
                     input("Press Enter to continue...")
-                    service = services[call["name"]]
+                    service = services[call["service"]]
                     request = roslibpy.ServiceRequest(call["args"])
                     service.call(request)
                 except Exception as e:

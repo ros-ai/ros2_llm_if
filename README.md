@@ -4,14 +4,13 @@ This demo demonstrates how `ChatGPT` can be used to call into `ROS` services, sp
 `ROS` is interfaced via WebSockets through [rosbridge_suite](https://github.com/RobotWebTools/rosbridge_suite). `ChatGPT`:
 - Calls into WebSockets
 - Does **not** execute any code on your machine
-- Is given knowledge about the API via [turtlesim_api.json](turtlesim_api.json)
+- Is given knowledge about the API via [turtlesim_msgs/srv](turtlesim_msgs/srv)
 
 
 Prompt:
 
 ```shell
-Move the turtle left by 2, then rotate 180 degrees, and move back to (5, 5).
-Finally, spawn a turtle named turtle2 at (10, 10) and remove turtle1.
+Move turtle1 left by 2, then rotate 180 degrees, and move back to (5, 5). Finally, spawn a turtle named turtle2 at (10, 10) and remove turtle1.
 ```
 
 Result:

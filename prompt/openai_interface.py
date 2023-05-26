@@ -1,5 +1,6 @@
 import json
 from typing import Any, Dict, List
+
 import openai
 
 
@@ -10,6 +11,7 @@ class OpenAIInterface:
         self.system_prompt_ = f"\
             Use this JSON schema to achieve the user's goals:\n\
             {str(api)}\n\
+            Respond as a list of JSON objects.\
             Do not include explanations or conversation in the response.\
         "
         self.chat_history_ = []

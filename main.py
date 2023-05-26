@@ -1,5 +1,4 @@
 import argparse
-import openai
 import json
 import roslibpy
 

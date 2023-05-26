@@ -1,5 +1,5 @@
 import json
-from typing import Any, Dict
+from typing import Any, Dict, List
 import openai
 
 
@@ -8,10 +8,9 @@ class OpenAIInterface:
         openai.api_key = key
         self.api_ = api
         self.system_prompt_ = f"\
-            Use the following API to achieve the user's goals:\n\
+            Use this JSON schema to achieve the user's goals:\n\
             {str(api)}\n\
-            Return the response as a JSON object with the format specified in the API.\n\
-            Do not include explanations or conversation in the response.\n\
+            Do not include explanations or conversation in the response.\
         "
         self.chat_history_ = []
 
@@ -19,8 +18,8 @@ class OpenAIInterface:
         self,
         prompt: str,
         model: str = "gpt-3.5-turbo",
-        temperature: float = 0.7,
-    ) -> Dict:
+        temperature: float = 0.8,
+    ) -> List[Dict]:
         """Turns prompt into API calls.
 
         Args:
@@ -41,19 +40,40 @@ class OpenAIInterface:
             }
         )
 
-        response = openai.ChatCompletion.create(
-            model=model,
-            messages=[{"role": "system", "content": self.system_prompt_}]
-            + self.chat_history_,
-            temperature=temperature,
-            n=1,
-        )
+        try:
+            response = openai.ChatCompletion.create(
+                model=model,
+                messages=[{"role": "system", "content": self.system_prompt_}]
+                + self.chat_history_,
+                temperature=temperature,
+                n=1,
+            )
+        except Exception as e:
+            print(f"Oops! Something went wrong with {e}.")
+            self.chat_history_.pop()
+            return []
 
         self.chat_history_.append(
             {"role": "assistant", "content": response.choices[0].message.content}
         )
 
         content = self.chat_history_[-1]["content"]
-        content = content.replace("'", '"')
         print(f"Got response:\n{content}")
-        return json.loads(content)
+        return self.post_process_response_(content)
+
+    def post_process_response_(self, gpt_response: str) -> List[Dict]:
+        """Applies some simple post-processing to the GPT response.
+
+        Args:
+            gpt_response (str): GPT response.
+
+        Returns:
+            List[Dict]: Post-processed response.
+        """
+        gpt_response = gpt_response.replace("'", '"')
+        gpt_response = json.loads(gpt_response)
+
+        if isinstance(gpt_response, list):
+            return gpt_response
+        else:
+            return [gpt_response]

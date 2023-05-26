@@ -54,5 +54,6 @@ class OpenAIInterface:
         )
 
         content = self.chat_history_[-1]["content"]
+        content = content.replace("'", '"')
         print(f"Got response:\n{content}")
         return json.loads(content)

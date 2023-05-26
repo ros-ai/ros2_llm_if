@@ -1,8 +1,9 @@
 from typing import Dict
+
 import roslibpy
 
 
-def get_service(
+def append_service(
     client: roslibpy.Ros, name: str, services: Dict[str, roslibpy.Service]
 ) -> Dict[str, roslibpy.Service]:
     """Update current services with the required one.

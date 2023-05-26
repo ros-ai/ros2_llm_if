@@ -49,7 +49,7 @@ You will we asked to enter a prompt. Try out
 Move turtle1 left by 2, then rotate 180 degrees, and move back to (5, 5). Finally, spawn a turtle named turtle2 at (10, 10) and remove turtle1.
 ```
 
-You will be presented with the generated API calls any will have to accept each one prior to execution.
+You will be presented with the generated API calls and will have to accept each one prior to execution.
 
 Why not try others:
 

@@ -21,7 +21,7 @@ Result:
 
 ## Installation
 - Have a running ROS distribution, e.g. [Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html)
-- Clone this repo `git clone git@github.com:mhubii/chatgpt_turtlesim.git`
+- Clone this repo `git clone https://github.com/ros-ai/chatgpt_turtlesim.git`
 - Install Python dependencies: `pip install -r requirements.txt`
 - Register an account at [OpenAI](https://openai.com/) and get a key [Where do I find my Secret API Key?](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)
 

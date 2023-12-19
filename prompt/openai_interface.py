@@ -1,12 +1,11 @@
 import json
 from typing import Any, Dict, List
 
-import openai
+from openai import OpenAI
 
 
 class OpenAIInterface:
     def __init__(self, api: Any, key: str) -> None:
-        openai.api_key = key
         self.api_ = api
         self.system_prompt_ = f"\
             Use this JSON schema to achieve the user's goals:\n\
@@ -15,6 +14,7 @@ class OpenAIInterface:
             Do not include explanations or conversation in the response.\
         "
         self.chat_history_ = []
+        self.client = OpenAI(api_key=key)
 
     def prompt_to_api_calls(
         self,
@@ -43,7 +43,7 @@ class OpenAIInterface:
         )
 
         try:
-            response = openai.ChatCompletion.create(
+            response = self.client.chat.completions.create(
                 model=model,
                 messages=[{"role": "system", "content": self.system_prompt_}]
                 + self.chat_history_,
